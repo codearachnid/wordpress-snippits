@@ -23,3 +23,21 @@ UPDATE wp_posts SET ping_status = 'closed|open' WHERE post_date < '2012-01-01' A
 
 /* Enable/Disable comments before a certain date */
 UPDATE wp_posts SET comment_status = 'closed' WHERE post_date < '2010-01-01' AND post_status = 'publish';
+
+/* cleanup bad characters */
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€œ', '“');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€', '”');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€™', '’');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€˜', '‘');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€”', '–');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€“', '—');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€¢', '-');
+UPDATE wp_posts SET post_content = REPLACE(post_content, 'â€¦', '…');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€œ', '“');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€', '”');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€™', '’');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€˜', '‘');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€”', '–');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€“', '—');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€¢', '-');
+UPDATE wp_comments SET comment_content = REPLACE(comment_content, 'â€¦', '…');
